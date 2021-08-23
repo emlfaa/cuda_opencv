@@ -1,0 +1,67 @@
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0eeab/fast && make[1]: 进入目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_0eeab.dir/build.make CMakeFiles/cmTC_0eeab.dir/build
+make[2]: 进入目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_0eeab.dir/src.cxx.o
+/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -std=gnu++14 -o CMakeFiles/cmTC_0eeab.dir/src.cxx.o -c /home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0eeab
+/home/ub/workspace/Toolkits/CLion-2020.1.1/clion-2020.1.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0eeab.dir/link.txt --verbose=1
+/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_0eeab.dir/src.cxx.o  -o cmTC_0eeab 
+CMakeFiles/cmTC_0eeab.dir/src.cxx.o：在函数‘main’中：
+src.cxx:(.text+0x3e)：对‘pthread_create’未定义的引用
+src.cxx:(.text+0x4a)：对‘pthread_detach’未定义的引用
+src.cxx:(.text+0x5b)：对‘pthread_join’未定义的引用
+src.cxx:(.text+0x6f)：对‘pthread_atfork’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_0eeab.dir/build.make:86: recipe for target 'cmTC_0eeab' failed
+make[2]: *** [cmTC_0eeab] Error 1
+make[2]: 离开目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+Makefile:121: recipe for target 'cmTC_0eeab/fast' failed
+make[1]: *** [cmTC_0eeab/fast] Error 2
+make[1]: 离开目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c4769/fast && make[1]: 进入目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_c4769.dir/build.make CMakeFiles/cmTC_c4769.dir/build
+make[2]: 进入目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_c4769.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu++14 -o CMakeFiles/cmTC_c4769.dir/CheckFunctionExists.cxx.o -c /home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_c4769
+/home/ub/workspace/Toolkits/CLion-2020.1.1/clion-2020.1.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4769.dir/link.txt --verbose=1
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_c4769.dir/CheckFunctionExists.cxx.o  -o cmTC_c4769  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c4769.dir/build.make:86: recipe for target 'cmTC_c4769' failed
+make[2]: *** [cmTC_c4769] Error 1
+make[2]: 离开目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+Makefile:121: recipe for target 'cmTC_c4769/fast' failed
+make[1]: *** [cmTC_c4769/fast] Error 2
+make[1]: 离开目录“/home/ub/workspace/codespace/cuda_ImageProcess/cmake-build-debug/CMakeFiles/CMakeTmp”
+
+
+
